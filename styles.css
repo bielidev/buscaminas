@@ -1,6 +1,35 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+form input {
+    height: 30px;
+    padding: 5px;
+}
+
+form button {
+    border: none;
+    background: #3cc972;
+    padding: 10px;
+    color: white;
+}
+form button:disabled {
+    border: none;
+    background: #ccc;
+    padding: 10px;
+    color: lightcyan;
+}
+
 #tablero {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
 }
 
 .fila {

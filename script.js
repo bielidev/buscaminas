@@ -1,3 +1,63 @@
+const form = document.getElementById("userForm")
+let currentPlayer = Player.get()
+let currentBoard = Board.get()
+
+function initGame(e) {
+  e.preventDefault()
+  
+  var formData = new FormData(form);
+
+  Player.remove()
+  Board.remove()
+
+  const player = {}
+  const board = {}
+
+
+  formData.forEach(function(value, key) {
+    if (!isNaN(value)) {
+      value = parseInt(value)
+    }
+    if (key.startsWith("player")) {
+      player[key.replace("player-", "")] = value
+    } else {
+      board[key.replace("board-", "")] = value
+    }
+  });
+
+
+  currentPlayer = new Player(player)
+  currentPlayer.save()
+  currentBoard = new Board(board)
+  currentBoard.save()
+}
+
+
+function printPlayer() {
+  const playerDiv = document.getElementById("player")
+  const h1 = document.createElement("h1")
+  h1.textContent = `¡Bienvenido ${currentPlayer.name} ${currentPlayer.surname}!`
+  playerDiv.appendChild(h1)
+  const h2 = document.createElement("h2")
+  h2.textContent = `Tu puntuación anterior es de: ${currentPlayer.score || 0} puntos`
+  playerDiv.appendChild(h2)
+}
+
+function checkPlayerAndWelcome() {
+  if (currentPlayer && currentBoard) {
+    form.remove()
+
+    printPlayer()
+
+    return
+  }
+
+  form.addEventListener("submit", initGame)
+}
+
+checkPlayerAndWelcome()
+
+
 class Casilla {
     constructor(fila, columna) {
       this.fila = fila;
@@ -110,7 +170,7 @@ class Casilla {
       }
     }
   }
-  window.onload = function() {
-    const tablero = new Tablero(5, 5, 5);
-    tablero.dibujarTablero();
-  }
+  // window.onload = function() {
+  //   const tablero = new Tablero(5, 5, 5);
+  //   tablero.dibujarTablero();
+  // }
