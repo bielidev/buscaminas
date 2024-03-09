@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +8,28 @@
     <link rel="stylesheet" href="styles.css">
     <script src="Player.js"></script>
     <script src="Board.js"></script>
+    <script src="Cell.js"></script>
 </head>
+
 <body>
     <div id="player"></div>
 
     <form id="userForm">
-        <input type="text" name="player-name" placeholder="Nombre" required>
-        <input type="text" name="player-surname" placeholder="Apellido" required>
-        <input type="date" name="player-birthdate" placeholder="Fecha nacimiento" max="2006-03-01" required>
-        <input type="text" name="player-nick" placeholder="Nick23" required pattern=".*\d$">
-        <input type="text" name="player-mail" placeholder="Email" required pattern=".{3,}@itb\.cat$">
-        <input type="number" name="board-rows" placeholder="Filas" min="3" max="10" required>
-        <input type="number" name="board-cols" placeholder="Columnas" min="3" max="10" required>
-        <input type="number" name="board-bombs" placeholder="Bombas" min="1" required>
+        <input type="text" id="name" name="name" placeholder="Nombre" required>
+        <input type="text" id="surname" name="surname" placeholder="Apellido" required>
+        <input id="birthdate" type="date" name="birthdate" placeholder="Fecha nacimiento" max="2006-03-01" required>
+        <input type="text" id="nick" name="nick" placeholder="Nick23" required pattern=".*\d$">
+        <input type="text" id="email" name="mail" placeholder="Email" required pattern=".{3,}@itb\.cat$">
+        <input type="number" id="rows" name="rows" placeholder="Filas" min="3" max="10" required>
+        <input type="number" id="cols" name="cols" placeholder="Columnas" min="3" max="10" required>
+        <input type="number" id="bombs" name="bombs" placeholder="Bombas" min="1" required>
         <button>EMPEZAR</button>
     </form>
 
-    <div id="tablero"></div>
+    <div id="board"></div>
 
 
     <script src="script.js"></script>
 </body>
+
 </html>
